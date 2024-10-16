@@ -1,4 +1,4 @@
-FROM node:12.18.2 as build
+FROM node:18 as build
 
 ARG REACT_APP_SERVICES_HOST=/services/m
 
@@ -10,6 +10,8 @@ COPY ./package-lock.json /app/package-lock.json
 RUN yarn install
 
 COPY . .
+
+ENV NODE_OPTIONS=--openssl-legacy-provider
 
 RUN yarn build
 

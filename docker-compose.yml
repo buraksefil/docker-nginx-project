@@ -1,5 +1,3 @@
-version: '3.8'
-
 services:
   frontend:
     image: nginx-frontend
@@ -7,6 +5,8 @@ services:
       context: ./frontend
       args:
         - REACT_APP_SERVICES_HOST=/services/m
+    environment:
+      - NODE_OPTIONS=--openssl-legacy-provider
     ports:
       - "80:80"
     networks: 
